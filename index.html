@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PrePlay — Играй. Соревнуйся. Прокачивайся.</title>
+  <meta name="description" content="PrePlay — мини‑игры в неоновом стиле: Морской бой, Камень‑Ножницы‑Бумага, Змейка, Виселица, Угадай число, Крестики‑нолики. Играйте с ИИ и в сети." />
+  <link rel="icon" type="image/svg+xml" href="./assets/img/icon.svg">
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PrePlay" />
+  <meta property="og:title" content="PrePlay — Играй. Соревнуйся. Прокачивайся." />
+  <meta property="og:description" content="Мини‑игры в неоновом стиле. Играй в одиночку, с ИИ или по Wi‑Fi. Сохраняй профиль и улучшай навыки." />
+  <meta property="og:image" content="./assets/img/covers/battleship.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <script defer src="./assets/js/main.js"></script>
+  <script defer src="./assets/js/ui.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html" aria-label="PrePlay">
+        <img src="./assets/img/logo.svg" alt="PrePlay" width="28" height="28"/>
+        <span class="brand-name">PrePlay</span>
+      </a>
+      <div class="theme-toggle" id="themeToggle" title="Переключить тему">☀️</div>
+      <a class="avatar" id="profileLink" href="./profile.html" title="Профиль"><span id="avatarInitial" aria-hidden="true"></span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <h1>Играй. Соревнуйся. Прокачивайся.</h1>
+      <p>Мини‑игры в неоновом стиле: аркады и головоломки, одиночные и сетевые режимы. Играйте с ИИ или по Wi‑Fi, сохраняйте профиль и улучшайте навыки.</p>
+      <div class="cta">
+        <a class="btn primary" href="#games">Выбрать игру</a>
+      </div>
+    </section>
+
+    <section id="games" class="games-grid container">
+      <a class="game-card" href="./games/battleship.html">
+        <img class="card-media" src="./assets/img/covers/battleship.svg" alt="Морской бой" />
+        <div class="card-content">
+          <div class="card-title">Морской бой</div>
+          <div class="card-desc">Классическая стратегия: найди и потопи флот противника. ИИ и сеть.</div>
+          <div class="card-tags"><span class="tag">Настольные</span><span class="tag">Сеть</span></div>
+        </div>
+      </a>
+      <a class="game-card" href="./games/rps.html">
+        <img class="card-media" src="./assets/img/covers/rps.svg" alt="Камень‑Ножницы‑Бумага" />
+        <div class="card-content">
+          <div class="card-title">Камень‑Ножницы‑Бумага</div>
+          <div class="card-desc">Мгновенный раунд 1v1. Локально, с ИИ и по сети.</div>
+          <div class="card-tags"><span class="tag">Дуэль</span><span class="tag">Сеть</span></div>
+        </div>
+      </a>
+      <a class="game-card" href="./games/snake.html">
+        <img class="card-media" src="./assets/img/covers/snake.svg" alt="Змейка" />
+        <div class="card-content">
+          <div class="card-title">Змейка</div>
+          <div class="card-desc">Собирай еду, не врежься. Выбирай скорость.</div>
+          <div class="card-tags"><span class="tag">Аркада</span></div>
+        </div>
+      </a>
+      <a class="game-card" href="./games/hangman.html">
+        <img class="card-media" src="./assets/img/covers/hangman.svg" alt="Виселица" />
+        <div class="card-content">
+          <div class="card-title">Виселица</div>
+          <div class="card-desc">Темы слов, отрисовка виселицы и подсказки.</div>
+          <div class="card-tags"><span class="tag">Логика</span></div>
+        </div>
+      </a>
+      <a class="game-card" href="./games/guess.html">
+        <img class="card-media" src="./assets/img/covers/guess.svg" alt="Угадай число" />
+        <div class="card-content">
+          <div class="card-title">Угадай число</div>
+          <div class="card-desc">Выбери диапазон и побей свой рекорд по попыткам.</div>
+          <div class="card-tags"><span class="tag">Числа</span></div>
+        </div>
+      </a>
+      <a class="game-card" href="./games/ttt.html">
+        <img class="card-media" src="./assets/img/covers/ttt.svg" alt="Крестики‑нолики" />
+        <div class="card-content">
+          <div class="card-title">Крестики‑нолики</div>
+          <div class="card-desc">Белые X/O и умный бот на minimax.</div>
+          <div class="card-tags"><span class="tag">Логика</span></div>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© PrePlay · 2025</span>
+      <span>Сделано с любовью к играм</span>
+    </div>
+  </footer>
+</body>
+</html>

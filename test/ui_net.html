@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tests: UI & Net</title>
+  <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+  <style>body{font-family:system-ui,Segoe UI,Arial,sans-serif} .host{margin:12px 0;}</style>
+</head>
+<body>
+  <div class="host">
+    <a id="profileLink"><span id="avatarInitial"></span></a>
+  </div>
+  <div id="mocha"></div>
+  <script>window.TESTING = true;</script>
+  <script src="https://unpkg.com/mocha/mocha.js"></script>
+  <script src="https://unpkg.com/chai/chai.js"></script>
+  <script>mocha.setup('bdd'); const { expect } = chai;</script>
+  <script src="./ws-mock.js"></script>
+  <script src="../assets/js/net.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="./ui.spec.js"></script>
+  <script src="./net.spec.js"></script>
+  <script>
+    mocha.run();
+  </script>
+</body>
+</html>

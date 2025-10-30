@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Морской бой — PrePlay</title>
+  <meta name="description" content="Классическая стратегия: играй против бота или по локальной сети (код комнаты)." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PrePlay" />
+  <meta property="og:title" content="Морской бой — PrePlay" />
+  <meta property="og:description" content="Расставь флот и сразись с ИИ или другом по Wi‑Fi." />
+  <meta property="og:image" content="../assets/img/covers/battleship.svg" />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/icon.svg" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="back-link" href="../index.html">⬅ Назад</a>
+      <div class="page-title">Морской бой</div>
+      <a class="avatar" id="profileLink" href="../profile.html" title="Профиль"><span id="avatarInitial" aria-hidden="true"></span></a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="banner"><img src="../assets/img/covers/battleship.svg" alt="Морской бой"/></div>
+    <p class="status">Выстрелы по очереди: попадание даёт дополнительный ход. Побеждает тот, кто первым потопит весь флот соперника.</p>
+    <div class="game-shell">
+      <div class="controls">
+        <select id="mode" class="select">
+          <option value="ai">Против ИИ</option>
+          <option value="net">Онлайн (бета)</option>
+        </select>
+        <button class="btn ghost" id="reset">Новая игра</button>
+      </div>
+      <div class="boards">
+        <div>
+          <div class="title">Ваш флот</div>
+          <div class="grid-wrap">
+            <div class="axis-x" id="axisXMe"></div>
+            <div class="axis-y" id="axisYMe"></div>
+            <div id="boardMe" class="board small" style="grid-template-columns:repeat(10, 1fr)"></div>
+          </div>
+        </div>
+        <div>
+          <div class="title">Поле противника</div>
+          <div class="grid-wrap">
+            <div class="axis-x" id="axisXAi"></div>
+            <div class="axis-y" id="axisYAi"></div>
+            <div id="boardAi" class="board small" style="grid-template-columns:repeat(10, 1fr)"></div>
+          </div>
+        </div>
+      </div>
+      <div class="status" id="status">Ваш ход. Кликайте по правой сетке.</div>
+      <details id="netBox" style="margin-top:10px;display:none">
+        <summary>Подключение по локальной сети (код комнаты)</summary>
+        <div class="controls" style="margin-top:10px">
+          <button class="btn" id="createOffer">Создать игру</button>
+          <button class="btn" id="useOffer">У меня есть код</button>
+        </div>
+        <div id="netStepOffer" style="display:none">
+          <div class="status">Код комнаты. Отправьте другу по вашей сети (LAN)</div>
+          <textarea id="offerOut" style="width:100%; height:100px"></textarea>
+          <div class="status">После того как друг подключится по коду, нажмите «Подключиться»</div>
+          <textarea id="answerIn" style="width:100%; height:100px"></textarea>
+          <div class="controls"><button class="btn" id="acceptAnswer">Подключиться</button></div>
+        </div>
+        <div id="netStepAnswer" style="display:none">
+          <div class="status">Введите код комнаты от друга</div>
+          <textarea id="offerIn" style="width:100%; height:100px"></textarea>
+          <div class="controls"><button class="btn" id="makeAnswer">Подключиться</button></div>
+          <div class="status">Ответ не требуется. После подключения начните игру.</div>
+          <textarea id="answerOut" style="width:100%; height:100px"></textarea>
+        </div>
+      </details>
+    </div>
+  </main>
+
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/net.js"></script>
+  <script src="./battleship.js"></script>
+</body>
+</html>

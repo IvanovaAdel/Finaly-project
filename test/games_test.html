@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tests: Games</title>
+  <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+  <style>body{font-family:system-ui,Segoe UI,Arial,sans-serif} .host{margin:12px 0;}</style>
+</head>
+<body>
+  <div id="mocha"></div>
+  <script src="https://unpkg.com/mocha/mocha.js"></script>
+  <script src="https://unpkg.com/chai/chai.js"></script>
+  <script>mocha.setup('bdd'); const { expect } = chai;</script>
+  <script>
+    // Minimal PrePlayUI stub for tests
+    window.PrePlayUI = {
+      addStat(){},
+      showResult(){},
+      getUser(){ return null; },
+      setUser(){}, logout(){},
+      submitScore(){}, getLeaderboard(){ return {}; }
+    };
+  </script>
+  <script src="./games.spec.js"></script>
+  <script>
+    mocha.run();
+  </script>
+</body>
+</html>

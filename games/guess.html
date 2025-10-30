@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Угадай число — PrePlay</title>
+  <meta name="description" content="Выбери диапазон и попробуй угадать число за минимум попыток." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PrePlay" />
+  <meta property="og:title" content="Угадай число — PrePlay" />
+  <meta property="og:description" content="Классика с настройкой диапазона и подсказками выше/ниже." />
+  <meta property="og:image" content="../assets/img/covers/guess.svg" />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/icon.svg" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="back-link" href="../index.html">⬅ Назад</a>
+      <div class="page-title">Угадай число</div>
+      <a class="avatar" id="profileLink" href="../profile.html" title="Профиль"><span id="avatarInitial" aria-hidden="true"></span></a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="banner"><img src="../assets/img/covers/guess.svg" alt="Угадай число"/></div>
+    <p class="status">Угадай число за минимум попыток. Выбери диапазон и включи режим соревновательности с друзьями.</p>
+    <div class="game-shell">
+      <div class="status" id="status">Я загадал число от 1 до 100</div>
+      <div class="controls">
+        <input type="number" id="guess" placeholder="Ваш ответ" min="1" max="100" />
+        <button class="btn" id="try">Проверить</button>
+        <button class="btn ghost" id="reset">Сброс</button>
+        <select id="range" class="select">
+          <option value="100">1–100</option>
+          <option value="1000">1–1000</option>
+          <option value="10000">1–10000</option>
+        </select>
+      </div>
+      <div>Осталось попыток: <span class="score" id="tries">0</span></div>
+    </div>
+  </main>
+
+  <script src="../assets/js/ui.js"></script>
+  <script src="./guess.js"></script>
+</body>
+</html>

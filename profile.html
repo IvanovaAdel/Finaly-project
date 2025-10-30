@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Профиль — PrePlay</title>
+  <meta name="description" content="Регистрация, вход и статистика игр PrePlay." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PrePlay" />
+  <meta property="og:title" content="Профиль — PrePlay" />
+  <meta property="og:description" content="Создайте профиль и следите за статистикой побед и поражений." />
+  <meta property="og:image" content="./assets/img/covers/battleship.svg" />
+  <link rel="icon" type="image/svg+xml" href="./assets/img/icon.svg" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="back-link" href="./index.html">⬅ Назад</a>
+      <div class="page-title">Профиль</div>
+      <div style="width:40px"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="game-shell auth-form" id="authBox">
+      <h1 class="form-title" id="formTitle">Регистрация</h1>
+      <p class="lead">Создайте аккаунт, чтобы сохранять статистику и настраивать профиль.</p>
+      <div class="controls">
+        <input type="text" id="name" placeholder="Например, Gamer" />
+        <input type="text" id="email" placeholder="you@example.com" />
+      </div>
+      <div class="status" style="margin-top:6px">Цвет аватара</div>
+      <div class="controls avatar-picker">
+        <button class="btn ghost" id="hueMinus" title="Сделать темнее">—</button>
+        <div class="avatar-badge" id="badge">PP</div>
+        <button class="btn ghost" id="huePlus" title="Сделать ярче">+</button>
+      </div>
+      <div class="status" style="margin-top:6px">Фото аватара (по желанию)</div>
+      <div class="controls">
+        <input type="file" id="avatarFile" accept="image/*" />
+        <button class="btn ghost" id="avatarRemove" title="Удалить загруженное фото">Удалить фото</button>
+      </div>
+      <div class="controls row-actions">
+        <button class="btn ghost" id="haveAccount">У меня уже есть аккаунт</button>
+        <button class="btn" id="save">Зарегистрироваться</button>
+      </div>
+    </div>
+
+    <div class="game-shell" id="profileBox" style="display:none">
+      <h2 class="form-title" style="font-size:28px">Ваш профиль</h2>
+      <div class="status" style="display:flex;align-items:center;gap:12px">
+        <div class="avatar-badge" id="badgeProfile" title="Аватар" style="position:fixed; top:12px; right:12px; width:72px; height:72px; font-size:28px; z-index:1000;"></div>
+        <span>Добро пожаловать, <b id="pName"></b></span>
+      </div>
+      <div class="controls">
+        <button class="btn" id="logout">Выйти</button>
+        <button class="btn" id="profileAvatarChange">Изменить фото</button>
+        <button class="btn ghost" id="profileAvatarRemove">Удалить фото</button>
+        <button class="btn ghost" id="deleteAccount" title="Удалить локальные данные аккаунта">Удалить аккаунт</button>
+        <input type="file" id="profileAvatarFile" accept="image/*" style="display:none" />
+      </div>
+      <h3>Рейтинг аккаунта (топ‑3)</h3>
+      <div id="accountRating" class="lb" style="margin-bottom:12px"></div>
+      <h3>Статистика по играм</h3>
+      <div id="gameStats" class="lb" style="margin-bottom:12px"></div>
+      <h3>Статистика (текст)</h3>
+      <pre id="stats" style="white-space:pre-wrap"></pre>
+      <h3 style="margin-top:16px">Рейтинг игр</h3>
+      <div id="leaderboards" class="lb"></div>
+    </div>
+  </main>
+
+  <script src="./assets/js/ui.js"></script>
+  <script src="./assets/js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Виселица — PrePlay</title>
+  <meta name="description" content="Отгадывай слова по темам. Рисуем виселицу по мере ошибок." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PrePlay" />
+  <meta property="og:title" content="Виселица — PrePlay" />
+  <meta property="og:description" content="Темы слов и визуальная отрисовка виселицы. Успей угадать слово!" />
+  <meta property="og:image" content="../assets/img/covers/hangman.svg" />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/icon.svg" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="back-link" href="../index.html">⬅ Назад</a>
+      <div class="page-title">Виселица</div>
+      <a class="avatar" id="profileLink" href="../profile.html" title="Профиль"><span id="avatarInitial" aria-hidden="true"></span></a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="banner"><img src="../assets/img/covers/hangman.svg" alt="Виселица"/></div>
+    <p class="status">Открой слово за ограничение ошибок. Выбирай тему слов и используй логику частот букв.</p>
+    <div class="game-shell">
+      <div class="status" id="status">Отгадай слово</div>
+      <div class="controls">
+        <select id="theme" class="select">
+          <option value="classic">Классика</option>
+          <option value="animals">Животные</option>
+          <option value="tech">Техника</option>
+          <option value="food">Еда</option>
+        </select>
+      </div>
+      <div class="canvas-wrap" style="margin:10px 0"><canvas id="canvas" width="480" height="220"></canvas></div>
+      <div id="word" style="font-size:28px; letter-spacing:8px; margin:10px 0; font-weight:800"></div>
+      <div>Ошибки: <span class="error" id="miss">0</span> / 7</div>
+      <div class="keyboard" id="kb"></div>
+      <div class="controls">
+        <button class="btn ghost" id="reset">Сброс</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="../assets/js/ui.js"></script>
+  <script src="./hangman.js"></script>
+</body>
+</html>

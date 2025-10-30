@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Крестики‑нолики — PrePlay</title>
+  <meta name="description" content="Классика на поле 3×3 с умным ботом (minimax)." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PrePlay" />
+  <meta property="og:title" content="Крестики‑нолики — PrePlay" />
+  <meta property="og:description" content="Сыграй против умного бота. Белые X/O и аккуратный интерфейс." />
+  <meta property="og:image" content="../assets/img/covers/ttt.svg" />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/icon.svg" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="back-link" href="../index.html">⬅ Назад</a>
+      <div class="page-title">Крестики‑нолики</div>
+      <a class="avatar" id="profileLink" href="../profile.html" title="Профиль"><span id="avatarInitial" aria-hidden="true"></span></a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="banner"><img src="../assets/img/covers/ttt.svg" alt="Крестики‑нолики"/></div>
+    <p class="status">Поставь три в ряд быстрее бота. Ты ходишь X, бот ходит O.</p>
+    <div class="game-shell ttt split">
+      <div class="panel">
+        <div id="board" class="board" style="grid-template-columns:repeat(3, 1fr)"></div>
+      </div>
+      <div class="panel" style="min-width:220px">
+        <div class="status" id="status">Твой ход (X)</div>
+        <div class="controls">
+          <select id="mode" class="select">
+            <option value="ai" selected>Против ИИ</option>
+            <option value="net">Онлайн (бета)</option>
+          </select>
+          <button class="btn ghost" id="reset">Сброс</button>
+        </div>
+        <details id="netBox" style="margin-top:10px;display:none">
+          <summary>Подключение по локальной сети (код комнаты)</summary>
+          <div class="controls" style="margin-top:10px">
+            <button class="btn" id="createOffer">Создать игру</button>
+            <button class="btn" id="useOffer">У меня есть код</button>
+          </div>
+          <div id="netStepOffer" style="display:none">
+            <div class="status">Код комнаты. Отправьте другу по вашей сети (LAN)</div>
+            <textarea id="offerOut" style="width:100%; height:100px"></textarea>
+            <div class="status">После подключения друга нажмите «Подключиться»</div>
+            <textarea id="answerIn" style="width:100%; height:100px"></textarea>
+            <div class="controls"><button class="btn" id="acceptAnswer">Подключиться</button></div>
+          </div>
+          <div id="netStepAnswer" style="display:none">
+            <div class="status">Введите код комнаты от друга</div>
+            <textarea id="offerIn" style="width:100%; height:100px"></textarea>
+            <div class="controls"><button class="btn" id="makeAnswer">Подключиться</button></div>
+            <div class="status">Ответ не требуется. После подключения начните игру.</div>
+            <textarea id="answerOut" style="width:100%; height:100px"></textarea>
+          </div>
+        </details>
+      </div>
+    </div>
+  </main>
+
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/net.js"></script>
+  <script src="./ttt.js"></script>
+</body>
+</html>
