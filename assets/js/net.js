@@ -56,7 +56,10 @@ const Net = (function(){
       try{
         const msg = JSON.parse(e.data);
         if(msg && msg.sys === 'ready'){
-          isReady = true; api.isConnected = true; return;
+          isReady = true; api.isConnected = true;
+          // Also forward to consumer so game UIs can update turn/state
+          api.onMessage && api.onMessage(msg);
+          return;
         }
         // Forward gameplay messages to consumer
         api.onMessage && api.onMessage(msg);

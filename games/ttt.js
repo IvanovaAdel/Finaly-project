@@ -61,7 +61,6 @@
     if(isNet){
       const mySymbol = isHost ? 'X' : 'O';
       if(!myTurn) return;
-      if(turn !== mySymbol) return; // safety
       board[i] = mySymbol; render();
       const w = winner(board);
       if(w){ finish(w); net?.send({t:'move', i}); return; }
@@ -120,9 +119,12 @@
   }
 
   createOfferBtn?.addEventListener('click', async ()=>{
-    net = await Net.create(true); isHost=true; myTurn=true; turn='X';
-    offerOut.value = await net.createOffer(); showStep('offer');
-    net.onMessage = onNetMsg; setStatus('Отправьте приглашение. Ожидаем ответ…');
+    net = await Net.create(true); isHost=true; myTurn=false; turn='X';
+    net.onMessage = onNetMsg; // set handler BEFORE creating room to not miss 'ready'
+    const code = await net.createOffer();
+    offerOut.value = code; showStep('offer');
+    setStatus('Отправьте код и ожидайте подключения соперника…');
+    render(); // disable board until ready
   });
   // Enable guest connect button only when code provided; focus input
   if(makeAnswerBtn && offerIn){
@@ -137,11 +139,14 @@
   });
   makeAnswerBtn?.addEventListener('click', async ()=>{
     net = await Net.create(false); isHost=false; myTurn=false; turn='X'; // гость ходит вторым, первый — X
-    answerOut.value = await net.acceptOffer(offerIn.value.trim());
-    net.onMessage = onNetMsg; setStatus('Подключено. Ход соперника.');
+    net.onMessage = onNetMsg; // set handler BEFORE joining to not miss 'ready'
+    const ans = await net.acceptOffer(offerIn.value.trim());
+    answerOut.value = ans; setStatus('Подключено. Ход соперника.');
   });
   acceptAnswerBtn?.addEventListener('click', async ()=>{
-    await net.acceptAnswer(answerIn.value.trim()); setStatus('Подключено. Ваш ход.');
+    await net.acceptAnswer(answerIn.value.trim());
+    setStatus('Ждём подтверждение подключения…');
+    // Ход будет выдан событием 'ready'
   });
 
   function onNetMsg(msg){
@@ -158,12 +163,14 @@
       const oppSymbol = isHost ? 'O' : 'X';
       const i = msg.i;
       if(i==null || board[i]) return;
-      if(turn !== oppSymbol) return; // safety
-      board[i] = oppSymbol; render();
+      // Apply opponent move
+      board[i] = oppSymbol;
       const w = winner(board);
-      if(w){ finish(w); return; }
+      if(w){ render(); finish(w); return; }
+      // Hand over the turn to us, then render so cells are enabled
       turn = oppSymbol==='X' ? 'O' : 'X';
       myTurn = true; setStatus('Ваш ход');
+      render();
     } else if(msg.t==='reset'){
       init();
     }
